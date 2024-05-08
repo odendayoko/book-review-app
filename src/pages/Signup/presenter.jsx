@@ -6,17 +6,17 @@ export const SignUpPagePresenter = () => {
       <h2>ユーザー新規作成</h2>
       <form onSubmit={() => {}}>
         <div className="form-item">
-          <label>メールアドレス</label>
+          <label htmlFor="email">メールアドレス</label>
           <br />
           <input type="email" id="email" className="input" />
         </div>
         <div className="form-item">
-          <label>名前</label>
+          <label htmlFor="name">名前</label>
           <br />
           <input type="text" id="name" className="input" />
         </div>
         <div className="form-item">
-          <label>パスワード</label>
+          <label htmlFor="password">パスワード</label>
           <br />
           <input type="password" id="password" className="input" />
         </div>
