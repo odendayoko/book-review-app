@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { SignUpPagePresenter } from "./presenter";
+import axios from "axios";
 
 export const SignUpPage = () => {
   const {
@@ -8,7 +9,18 @@ export const SignUpPage = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post(
+        "https://railway.bookreview.techtrain.dev/users",
+        { name: data.name, email: data.email, password: data.password }
+      );
+      const token = response.data.token;
+      localStorage.setItem("token", token);
+    } catch (e) {
+      // handle your error
+    }
+  };
 
   return (
     <SignUpPagePresenter
