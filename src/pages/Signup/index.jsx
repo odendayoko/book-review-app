@@ -16,13 +16,9 @@ export const SignUpPage = () => {
 
   const [compressedFile, setCompressedFile] = useState();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (formData) => {
     try {
-      const response = await axios.post(
-        "https://railway.bookreview.techtrain.dev/users",
-        { name: data.name, email: data.email, password: data.password }
-      );
-      const token = response.data.token;
+      const token = await signUp(formData);
       localStorage.setItem("token", token);
 
       await uploadIcon(token);
@@ -32,6 +28,20 @@ export const SignUpPage = () => {
       if (axios.isAxiosError(error)) {
         alert(error.response.data.ErrorMessageJP);
       }
+      throw error;
+    }
+  };
+
+  const signUp = async (params) => {
+    try {
+      const response = await axios.post(
+        "https://railway.bookreview.techtrain.dev/users",
+        params
+      );
+      return response.data.token;
+    } catch (error) {
+      console.error("Sign up error:", error);
+      throw error;
     }
   };
 
