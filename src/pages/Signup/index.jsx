@@ -3,8 +3,11 @@ import { SignUpPagePresenter } from "./presenter";
 import axios from "axios";
 import Compressor from "compressorjs";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 export const SignUpPage = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -21,8 +24,36 @@ export const SignUpPage = () => {
       );
       const token = response.data.token;
       localStorage.setItem("token", token);
-    } catch (e) {
-      // handle your error
+
+      await uploadIcon(token);
+
+      navigate("/");
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        alert(error.response.data.ErrorMessageJP);
+      }
+    }
+  };
+
+  const uploadIcon = async (token) => {
+    try {
+      const formData = new FormData();
+      formData.append("icon", compressedFile);
+
+      const response = await axios.post(
+        "https://railway.bookreview.techtrain.dev/uploads",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Icon upload error:", error);
+      throw error;
     }
   };
 
@@ -34,9 +65,9 @@ export const SignUpPage = () => {
         maxWidthOrHeight: 128,
         // ファイルサイズは1MB以下に圧縮する
         maxSizeMB: 1,
-        success: (compressedFile) => {
+        success: (result) => {
           // なんかもっといい方法ありそう…
-          setCompressedFile(compressedFile);
+          setCompressedFile(result);
         },
         error: (error) => {
           console.log("compressError:", error);
