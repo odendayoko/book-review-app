@@ -26,8 +26,9 @@ export const LoginPage = () => {
       localStorage.setItem("token", token);
       navigate("/");
     } catch (error) {
-      console.error("Login error:", error);
-      alert("ログインに失敗しました。");
+      if (axios.isAxiosError(error)) {
+        alert(error.response.data.ErrorMessageJP);
+      }
       throw error;
     }
   };
