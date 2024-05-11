@@ -1,5 +1,20 @@
+import { useForm } from "react-hook-form";
 import { LoginPagePresenter } from "./presenter";
 
 export const LoginPage = () => {
-  return <LoginPagePresenter />;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = () => {};
+
+  return (
+    <LoginPagePresenter
+      register={register}
+      handleSubmit={handleSubmit(onSubmit)}
+      errors={errors}
+    />
+  );
 };

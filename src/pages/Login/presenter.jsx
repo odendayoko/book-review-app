@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import "./Login.css";
 
-export const LoginPagePresenter = () => {
+export const LoginPagePresenter = ({ register, handleSubmit, errors }) => {
   return (
     <div className="login">
       <h2>ログイン</h2>
-      <form onSubmit={() => {}}>
+      <form onSubmit={handleSubmit}>
         <div className="form-item">
           <label htmlFor="email">メールアドレス</label>
           <br />
@@ -13,11 +13,11 @@ export const LoginPagePresenter = () => {
             type="email"
             id="email"
             className="input"
-            // {...register("email", { required: "メールアドレスは必須です" })}
+            {...register("email", { required: "メールアドレスは必須です" })}
           />
-          {/* {errors.email && (
+          {errors.email && (
             <span className="error-message">{errors.email.message}</span>
-          )} */}
+          )}
         </div>
         <div className="form-item">
           <label htmlFor="password">パスワード</label>
@@ -26,13 +26,13 @@ export const LoginPagePresenter = () => {
             type="password"
             id="password"
             className="input"
-            // {...register("password", {
-            //   required: "パスワードは必須です",
-            // })}
+            {...register("password", {
+              required: "パスワードは必須です",
+            })}
           />
-          {/* {errors.password && (
+          {errors.password && (
             <span className="error-message">{errors.password.message}</span>
-          )} */}
+          )}
         </div>
         <div className="button-container">
           <button className="login-button" type="submit">
