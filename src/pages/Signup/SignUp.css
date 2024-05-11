@@ -4,13 +4,13 @@
   margin: 0 auto;
 
   .form-item {
-    margin-bottom: 25px;
+    margin-bottom: 24px;
   }
 
   .input {
     width: 100%;
     font-size: large;
-    height: 30px;
+    min-height: 32px;
   }
 
   .signUp-button-container {

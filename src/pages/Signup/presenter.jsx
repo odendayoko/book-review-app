@@ -1,6 +1,11 @@
 import "./SignUp.css";
 
-export const SignUpPagePresenter = ({ register, handleSubmit, errors }) => {
+export const SignUpPagePresenter = ({
+  register,
+  handleSubmit,
+  errors,
+  handleFileChange,
+}) => {
   return (
     <div className="signUp">
       <h2>ユーザー新規作成</h2>
@@ -45,6 +50,17 @@ export const SignUpPagePresenter = ({ register, handleSubmit, errors }) => {
           {errors.password && (
             <span className="error-message">{errors.password.message}</span>
           )}
+        </div>
+        <div className="form-item">
+          <label htmlFor="image">アイコン画像</label>
+          <br />
+          <input
+            type="file"
+            id="image"
+            className="input"
+            accept="image/png, image/jpeg"
+            onChange={handleFileChange}
+          />
         </div>
         <div className="signUp-button-container">
           <button className="signUp-button" type="submit">
