@@ -4,20 +4,23 @@ import axios from "axios";
 
 export const HomePage = () => {
   const [books, setBooks] = useState([]);
+  const [page, setPage] = useState(0);
+  const booksPerPage = 10;
 
   useEffect(() => {
-    // 仮でpageを0としておく
-    fetchBooks(0).then((responseData) => {
+    fetchBooks(page).then((responseData) => {
       setBooks(responseData);
     });
-  }, []);
+  }, [page]);
 
   const fetchBooks = async (page) => {
     try {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        `https://railway.bookreview.techtrain.dev/books?offset=${page}`,
+        `https://railway.bookreview.techtrain.dev/books?offset=${
+          page * booksPerPage
+        }`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -34,5 +37,11 @@ export const HomePage = () => {
     }
   };
 
-  return <HomePagePresenter books={books} />;
+  const handlePageChange = (page) => {
+    setPage(page);
+  };
+
+  return (
+    <HomePagePresenter books={books} handlePageChange={handlePageChange} />
+  );
 };

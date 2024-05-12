@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./home.css";
 import { Pagination } from "@yamada-ui/pagination";
 
-export const HomePagePresenter = ({ books }) => {
+export const HomePagePresenter = ({ books, handlePageChange }) => {
   return (
     <div className="homeContainer">
       <h2 className="homeContainer__title">書籍レビュー一覧</h2>
@@ -20,13 +20,15 @@ export const HomePagePresenter = ({ books }) => {
       </ul>
       <div className="paginationContainer">
         <Pagination
-          total={50}
+          // 最大データ数どうやって取得すればいいの？
+          // とりあえずこれ以上のデータは存在しなかったので、ベタ書きしておく
+          total={22}
           variant="solid"
           size="lg"
           colorScheme="pink"
           siblings={2}
           withEdges
-          onChange={() => {}}
+          onChange={handlePageChange}
         />
       </div>
     </div>
