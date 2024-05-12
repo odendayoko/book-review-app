@@ -3,8 +3,10 @@ import { HeaderPresenter } from "./presenter";
 import { AuthContext } from "../../router/AuthContext";
 import axios from "axios";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
+  const navigate = useNavigate();
   const { isLoggedIn } = useContext(AuthContext);
 
   const [user, setUser] = useState(null);
@@ -36,5 +38,11 @@ export const Header = () => {
     });
   }, []);
 
-  return <HeaderPresenter isLoggedIn={isLoggedIn} user={user} />;
+  return (
+    <HeaderPresenter
+      isLoggedIn={isLoggedIn}
+      user={user}
+      handleLoginClick={() => navigate("/login")}
+    />
+  );
 };
