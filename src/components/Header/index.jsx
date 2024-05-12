@@ -1,5 +1,9 @@
+import { useContext } from "react";
 import { HeaderPresenter } from "./presenter";
+import { AuthContext } from "../../router/AuthContext";
 
 export const Header = () => {
-  return <HeaderPresenter />;
+  const { isLoggedIn } = useContext(AuthContext);
+
+  return <HeaderPresenter isLoggedIn={isLoggedIn} />;
 };

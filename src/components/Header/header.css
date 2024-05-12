@@ -1,26 +1,26 @@
 .header {
-  height: 100px;
+  min-height: 80px;
   background-color: lightpink;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 16px;
+  padding: 8px 24px;
   .header__title {
     font-weight: bold;
     font-size: xx-large;
     color: rgb(240, 81, 124);
   }
-}
+  .header__loginButton {
+    background-color: rgb(240, 81, 124);
+    color: #ffffff;
+    height: 40px;
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+  }
 
-.header__logOutButton {
-  color: rgb(240, 81, 124);
-  background-color: inherit;
-  height: 40px;
-  border-radius: 5px;
-  border: 1px solid rgb(240, 81, 124);
-  font-weight: bold;
-}
-
-.header__userName {
-  font-weight: bold;
+  .header__userName {
+    font-weight: bold;
+  }
 }

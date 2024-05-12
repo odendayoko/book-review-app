@@ -1,13 +1,16 @@
 import "./header.css";
 
-export const HeaderPresenter = () => {
+export const HeaderPresenter = ({ isLoggedIn }) => {
   return (
     <header className="header">
       <h1 className="header__title">Book Review</h1>
-      {/* <button onClick={() => {}} className="header__logOutButton">
-        ログアウト
-      </button> */}
-      <div className="header__userName">ユーザー名</div>
+      {isLoggedIn ? (
+        <div className="header__userName">ユーザー名</div>
+      ) : (
+        <button onClick={() => {}} className="header__loginButton">
+          ログイン
+        </button>
+      )}
     </header>
   );
 };
