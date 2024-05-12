@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
   const navigate = useNavigate();
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, logout } = useContext(AuthContext);
 
   const [user, setUser] = useState(null);
 
@@ -43,6 +43,7 @@ export const Header = () => {
       isLoggedIn={isLoggedIn}
       user={user}
       handleLoginClick={() => navigate("/login")}
+      handleLogoutClick={logout}
     />
   );
 };

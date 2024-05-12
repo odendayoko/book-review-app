@@ -22,5 +22,21 @@
 
   .header__userName {
     font-weight: bold;
+    padding-right: 12px;
+  }
+
+  .header__buttonContainer {
+    display: flex;
+    align-items: center;
+  }
+
+  .header__logoutButton {
+    color: rgb(240, 81, 124);
+    background-color: lightpink;
+    height: 40px;
+    padding: 12px;
+    border-radius: 5px;
+    border: solid rgb(240, 81, 124);
+    font-weight: bold;
   }
 }

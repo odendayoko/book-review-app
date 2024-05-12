@@ -2,11 +2,13 @@ import { useForm } from "react-hook-form";
 import { SignUpPagePresenter } from "./presenter";
 import axios from "axios";
 import Compressor from "compressorjs";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
+import { AuthContext } from "../../router/AuthContext";
 
 export const SignUpPage = () => {
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
   const {
     register,
@@ -19,7 +21,7 @@ export const SignUpPage = () => {
   const onSubmit = async (formData) => {
     try {
       const token = await signUp(formData);
-      localStorage.setItem("token", token);
+      login(token);
 
       await uploadIcon(token);
 

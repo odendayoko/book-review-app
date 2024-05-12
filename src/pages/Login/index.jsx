@@ -2,9 +2,12 @@ import { useForm } from "react-hook-form";
 import { LoginPagePresenter } from "./presenter";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../router/AuthContext";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
   const {
     register,
@@ -23,7 +26,7 @@ export const LoginPage = () => {
       );
 
       const token = response.data.token;
-      localStorage.setItem("token", token);
+      login(token);
       navigate("/");
     } catch (error) {
       if (axios.isAxiosError(error)) {
