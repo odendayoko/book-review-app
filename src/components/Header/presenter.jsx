@@ -1,11 +1,11 @@
 import "./header.css";
 
-export const HeaderPresenter = ({ isLoggedIn }) => {
+export const HeaderPresenter = ({ isLoggedIn, user }) => {
   return (
     <header className="header">
       <h1 className="header__title">Book Review</h1>
       {isLoggedIn ? (
-        <div className="header__userName">ユーザー名</div>
+        <div className="header__userName">{user?.name}</div>
       ) : (
         <button onClick={() => {}} className="header__loginButton">
           ログイン
