@@ -1,9 +1,10 @@
 import axios from "axios";
 import { ProfilePagePresenter } from "./presenter";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { fetchUser } from "../../components/Header";
 
 export const ProfilePage = () => {
-  const [formValue, setFormValue] = useState({ name: "defaultName" });
+  const [formValue, setFormValue] = useState({});
 
   const updateUser = async (token) => {
     try {
@@ -41,6 +42,19 @@ export const ProfilePage = () => {
   const handleChangeUserName = (newName) => {
     setFormValue({ ...formValue, name: newName });
   };
+
+  // グローバルで持つのだるいので毎回fetchする
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token == null) {
+      return;
+    }
+
+    fetchUser(token).then((responseData) => {
+      setFormValue(responseData);
+    });
+  }, []);
 
   return (
     <ProfilePagePresenter
