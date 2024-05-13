@@ -3,15 +3,19 @@ import "./home.css";
 import { Pagination } from "../../components/Pagination";
 import { Header } from "../../components/Header";
 
-export const HomePagePresenter = ({ books, handlePageChange }) => {
+export const HomePagePresenter = ({ books, handlePageChange, isLoggedIn }) => {
   return (
     <>
       <Header />
       <div className="homeContainer">
         <h2 className="homeContainer__title">書籍レビュー一覧</h2>
         <div className="newBookButtonContainer">
-          <Link to="/new">
-            <button className="newBookButton">＋ レビューを投稿する</button>
+          <Link to={isLoggedIn ? "/new" : "/login"}>
+            <button className="newBookButton">
+              {isLoggedIn
+                ? "＋ レビューを投稿する"
+                : "＋ ログインしてレビューを投稿する"}
+            </button>
           </Link>
         </div>
         <ul className="bookList">

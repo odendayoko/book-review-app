@@ -48,6 +48,10 @@ export const HomePage = () => {
   };
 
   return (
-    <HomePagePresenter books={books} handlePageChange={handlePageChange} />
+    <HomePagePresenter
+      books={books}
+      handlePageChange={handlePageChange}
+      isLoggedIn={isLoggedIn}
+    />
   );
 };
