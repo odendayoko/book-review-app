@@ -47,3 +47,17 @@
 .paginationContainer {
   padding: 32px;
 }
+
+.newBookButtonContainer {
+  padding: 12px 24px;
+}
+
+.newBookButton {
+  background-color: goldenrod;
+  color: #ffffff;
+  min-width: 200px;
+  padding: 12px;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+}

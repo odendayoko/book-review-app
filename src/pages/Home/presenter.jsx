@@ -9,6 +9,11 @@ export const HomePagePresenter = ({ books, handlePageChange }) => {
       <Header />
       <div className="homeContainer">
         <h2 className="homeContainer__title">書籍レビュー一覧</h2>
+        <div className="newBookButtonContainer">
+          <Link to="/new">
+            <button className="newBookButton">＋ レビューを投稿する</button>
+          </Link>
+        </div>
         <ul className="bookList">
           {books.map((book) => (
             <li key={book.id} className="bookList__item">
