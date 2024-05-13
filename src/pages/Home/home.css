@@ -38,6 +38,7 @@
       }
       .bookItem__user {
         font-size: medium;
+        padding-bottom: 4px;
       }
     }
   }

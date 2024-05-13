@@ -17,6 +17,19 @@ export const HomePagePresenter = ({ books, handlePageChange }) => {
                 <div className="bookItem__body">{book.detail}</div>
                 <div className="bookItem__body">{book.review}</div>
                 <div className="bookItem__user">by {book.reviewer}</div>
+                <div className="bookItem__url">
+                  <a
+                    href={book.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.open(book.url, "_blank");
+                    }}
+                  >
+                    本の購入はこちら
+                  </a>
+                </div>
               </Link>
             </li>
           ))}

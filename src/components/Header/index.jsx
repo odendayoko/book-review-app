@@ -11,8 +11,7 @@ export const Header = () => {
 
   const [user, setUser] = useState(null);
 
-  const fetchUser = async () => {
-    const token = localStorage.getItem("token");
+  const fetchUser = async (token) => {
     try {
       const response = await axios.get(
         "https://railway.bookreview.techtrain.dev/users",
@@ -33,7 +32,13 @@ export const Header = () => {
   };
 
   useEffect(() => {
-    fetchUser().then((responseData) => {
+    const token = localStorage.getItem("token");
+
+    if (token == null) {
+      return;
+    }
+
+    fetchUser(token).then((responseData) => {
       setUser(responseData);
     });
   }, []);
