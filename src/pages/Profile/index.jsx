@@ -2,8 +2,10 @@ import axios from "axios";
 import { ProfilePagePresenter } from "./presenter";
 import { useEffect, useState } from "react";
 import { fetchUser } from "../../components/Header";
+import { useNavigate } from "react-router-dom";
 
 export const ProfilePage = () => {
+  const navigate = useNavigate();
   const [formValue, setFormValue] = useState({});
 
   const updateUser = async (token) => {
@@ -36,6 +38,7 @@ export const ProfilePage = () => {
 
     updateUser(token).then(() => {
       alert("プロフィールを更新しました");
+      navigate("/");
     });
   };
 
