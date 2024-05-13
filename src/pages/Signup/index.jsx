@@ -21,7 +21,7 @@ export const SignUpPage = () => {
   const onSubmit = async (formData) => {
     try {
       const token = await signUp(formData);
-      login(token);
+      await login(token);
 
       await uploadIcon(token);
 
