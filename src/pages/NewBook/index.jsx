@@ -1,23 +1,22 @@
 import axios from "axios";
 import { NewBookPagePresenter } from "./presenter";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 export const NewBookPage = () => {
   const navigate = useNavigate();
 
-  const [formValue, setFormValue] = useState({
-    title: "",
-    url: "",
-    detail: "",
-    review: "",
-  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const postBooks = async (token) => {
+  const postBooks = async (token, params) => {
     try {
       await axios.post(
         "https://railway.bookreview.techtrain.dev/books",
-        formValue,
+        params,
         {
           headers: {
             "Content-Type": "application/json",
@@ -33,19 +32,24 @@ export const NewBookPage = () => {
     }
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const onSubmit = async (formData) => {
     const token = localStorage.getItem("token");
 
     if (token == null) {
       return;
     }
 
-    postBooks(token).then(() => {
+    postBooks(token, formData).then(() => {
       alert("レビューを投稿しました");
       navigate("/");
     });
   };
 
-  return <NewBookPagePresenter onSubmit={handleSubmit} />;
+  return (
+    <NewBookPagePresenter
+      handleSubmit={handleSubmit(onSubmit)}
+      register={register}
+      errors={errors}
+    />
+  );
 };
