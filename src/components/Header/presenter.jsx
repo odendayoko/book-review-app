@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./header.css";
 
 export const HeaderPresenter = ({
@@ -11,7 +12,9 @@ export const HeaderPresenter = ({
       <h1 className="header__title">Book Review</h1>
       {isLoggedIn ? (
         <div className="header__buttonContainer">
-          <div className="header__userName">{user?.name}</div>
+          <Link to="/profile">
+            <div className="header__userName">{user?.name}</div>
+          </Link>
           <button onClick={handleLogoutClick} className="header__logoutButton">
             ログアウト
           </button>

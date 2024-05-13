@@ -1,0 +1,30 @@
+.profile {
+  max-width: 500px;
+  width: 80%;
+  margin: 0 auto;
+
+  .formItem {
+    margin-bottom: 24px;
+  }
+
+  .input {
+    width: 100%;
+    font-size: large;
+    min-height: 32px;
+  }
+
+  .updateButtonContainer {
+    text-align: center;
+    padding-top: 24px;
+  }
+
+  .updateButton {
+    background-color: goldenrod;
+    color: #ffffff;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+  }
+}

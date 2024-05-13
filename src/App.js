@@ -6,6 +6,7 @@ import { HomePage } from "./pages/Home";
 // import { UIProvider } from "@yamada-ui/react";
 import { AuthProvider } from "./router/AuthContext";
 import { PublicRoute } from "./router/PublicRoute";
+import { ProfilePage } from "./pages/Profile";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             }
           />
           <Route path="/" element={<HomePage />} />
+          <Route path="profile" element={<ProfilePage />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
