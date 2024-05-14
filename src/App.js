@@ -8,6 +8,7 @@ import { AuthProvider } from "./router/AuthContext";
 import { PublicRoute } from "./router/PublicRoute";
 import { ProfilePage } from "./pages/Profile";
 import { NewBookPage } from "./pages/NewBook";
+import { BookInfoPage } from "./pages/BookInfo";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/new" element={<NewBookPage />} />
+          <Route path={`/detail/:id`} element={<BookInfoPage />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
