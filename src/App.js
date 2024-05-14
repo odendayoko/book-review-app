@@ -8,6 +8,7 @@ import { PublicRoute } from "./router/PublicRoute";
 import { ProfilePage } from "./pages/Profile";
 import { NewBookPage } from "./pages/NewBook";
 import { BookInfoPage } from "./pages/BookInfo";
+import { EditBooksPage } from "./pages/EditBooks";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/new" element={<NewBookPage />} />
           <Route path={`/detail/:id`} element={<BookInfoPage />} />
+          <Route path={`/edit/:id`} element={<EditBooksPage />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
