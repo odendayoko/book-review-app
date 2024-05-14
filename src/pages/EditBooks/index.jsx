@@ -2,6 +2,8 @@ import axios from "axios";
 import { EditBooksPagePresenter } from "./presenter";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
+import { fetchBookInfo } from "../BookInfo";
 
 export const EditBooksPage = () => {
   const navigate = useNavigate();
@@ -11,6 +13,7 @@ export const EditBooksPage = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const updateBooks = async (token, params) => {
@@ -45,6 +48,20 @@ export const EditBooksPage = () => {
       navigate("/");
     });
   };
+
+  // グローバルで持つのだるいので毎回fetchする
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token == null) {
+      return;
+    }
+
+    fetchBookInfo(id, token).then((responseData) => {
+      reset(responseData);
+    });
+  }, [id, reset]);
+
   return (
     <EditBooksPagePresenter
       handleSubmit={handleSubmit(onUpdate)}
