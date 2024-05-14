@@ -3,7 +3,12 @@ import "./home.css";
 import { Pagination } from "../../components/Pagination";
 import { Header } from "../../components/Header";
 
-export const HomePagePresenter = ({ books, handlePageChange, isLoggedIn }) => {
+export const HomePagePresenter = ({
+  books,
+  handlePageChange,
+  isLoggedIn,
+  handleClickItem,
+}) => {
   return (
     <>
       <Header />
@@ -21,7 +26,11 @@ export const HomePagePresenter = ({ books, handlePageChange, isLoggedIn }) => {
         <ul className="bookList">
           {books.map((book) => (
             <li key={book.id} className="bookList__item">
-              <Link to={`/detail/${book.id}`} className="bookItem__link">
+              <Link
+                to={`/detail/${book.id}`}
+                className="bookItem__link"
+                onClick={() => handleClickItem(book.id)}
+              >
                 <div className="bookItem__title">{book.title}</div>
                 <div className="bookItem__body">{book.detail}</div>
                 <div className="bookItem__body">{book.review}</div>

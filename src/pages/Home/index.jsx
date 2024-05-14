@@ -47,11 +47,42 @@ export const HomePage = () => {
     setPage(page);
   };
 
+  const sendLog = async (selectBookId, token) => {
+    try {
+      axios.post(
+        `https://railway.bookreview.techtrain.dev/logs`,
+        { selectBookId },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        alert(error.response.data.ErrorMessageJP);
+      }
+      throw error;
+    }
+  };
+
+  const handleClickItem = (id) => {
+    const token = localStorage.getItem("token");
+
+    if (token == null) {
+      return;
+    }
+
+    sendLog(id, token);
+  };
+
   return (
     <HomePagePresenter
       books={books}
       handlePageChange={handlePageChange}
       isLoggedIn={isLoggedIn}
+      handleClickItem={handleClickItem}
     />
   );
 };
