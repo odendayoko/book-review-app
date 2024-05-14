@@ -10,6 +10,9 @@
     font-size: xx-large;
     color: rgb(240, 81, 124);
   }
+  a {
+    text-decoration: none;
+  }
   .header__loginButton {
     background-color: rgb(240, 81, 124);
     color: #ffffff;

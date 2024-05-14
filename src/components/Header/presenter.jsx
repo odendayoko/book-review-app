@@ -9,7 +9,9 @@ export const HeaderPresenter = ({
 }) => {
   return (
     <header className="header">
-      <h1 className="header__title">Book Review</h1>
+      <Link to="/">
+        <h1 className="header__title">Book Review</h1>
+      </Link>
       {isLoggedIn ? (
         <div className="header__buttonContainer">
           <Link to="/profile">
