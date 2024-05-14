@@ -1,14 +1,19 @@
 import React from "react";
 import { Header } from "../../components/Header";
-import "./editBooks.css"; // CSSファイルをインポート
+import "./editBooks.css";
 
-export const EditBooksPagePresenter = ({ register, handleSubmit, errors }) => {
+export const EditBooksPagePresenter = ({
+  register,
+  onSubmit,
+  errors,
+  onDelete,
+}) => {
   return (
     <>
       <Header />
       <div className="editBooks">
         <h2>レビュー編集</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSubmit}>
           <div className="formItem">
             <label htmlFor="title">本のタイトル</label>
             <input
@@ -55,7 +60,10 @@ export const EditBooksPagePresenter = ({ register, handleSubmit, errors }) => {
               <span className="error-message">{errors.review.message}</span>
             )}
           </div>
-          <div className="updateButtonContainer">
+          <div className="buttonContainer">
+            <button type="button" className="deleteButton" onClick={onDelete}>
+              削除
+            </button>
             <button className="updateButton" type="submit">
               更新
             </button>

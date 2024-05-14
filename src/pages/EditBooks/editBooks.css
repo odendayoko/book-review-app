@@ -45,21 +45,31 @@
     margin-top: 5px;
   }
 
-  .updateButtonContainer {
-    text-align: center;
-    margin-top: 20px;
+  .buttonContainer {
+    display: flex;
+    justify-content: space-between;
   }
 
   .updateButton {
     background-color: rgb(240, 81, 124);
-    color: #fff;
+    color: white;
+  }
+
+  .deleteButton {
+    background-color: lightblue;
+    color: white;
+  }
+
+  .deleteButton:hover {
+    background-color: #a2c4e8;
+  }
+
+  .updateButton,
+  .deleteButton {
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
-    font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-weight: bold;
   }
 
   .updateButton:hover {

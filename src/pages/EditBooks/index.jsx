@@ -16,6 +16,8 @@ export const EditBooksPage = () => {
     reset,
   } = useForm();
 
+  const token = localStorage.getItem("token");
+
   const updateBooks = async (token, params) => {
     try {
       await axios.put(
@@ -36,9 +38,26 @@ export const EditBooksPage = () => {
     }
   };
 
-  const onUpdate = async (formData) => {
-    const token = localStorage.getItem("token");
+  const deleteBooks = async (token) => {
+    try {
+      await axios.delete(
+        `https://railway.bookreview.techtrain.dev/books/${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        alert(error.response.data.ErrorMessageJP);
+      }
+      throw error;
+    }
+  };
 
+  const onUpdate = async (formData) => {
     if (token == null) {
       return;
     }
@@ -49,7 +68,17 @@ export const EditBooksPage = () => {
     });
   };
 
-  // グローバルで持つのだるいので毎回fetchする
+  const handleDelete = () => {
+    if (token == null) {
+      return;
+    }
+
+    deleteBooks(token).then(() => {
+      alert("レビューを削除しました");
+      navigate("/");
+    });
+  };
+
   useEffect(() => {
     const token = localStorage.getItem("token");
 
@@ -64,9 +93,10 @@ export const EditBooksPage = () => {
 
   return (
     <EditBooksPagePresenter
-      handleSubmit={handleSubmit(onUpdate)}
+      onSubmit={handleSubmit(onUpdate)}
       register={register}
       errors={errors}
+      onDelete={handleDelete}
     />
   );
 };
