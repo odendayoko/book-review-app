@@ -1,0 +1,77 @@
+.editBooks {
+  max-width: 800px;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  .formItem {
+    margin-bottom: 15px;
+  }
+
+  .formItem label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+  }
+
+  .input,
+  .textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 1rem;
+    color: #333;
+  }
+
+  .input:focus,
+  .textarea:focus {
+    border-color: rgb(240, 81, 124);
+    outline: none;
+  }
+
+  .textarea {
+    min-height: 80px;
+    resize: vertical;
+  }
+
+  .error-message {
+    color: rgb(210, 71, 104);
+    font-size: 0.875rem;
+    margin-top: 5px;
+  }
+
+  .updateButtonContainer {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .updateButton {
+    background-color: rgb(240, 81, 124);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .updateButton:hover {
+    background-color: rgb(210, 71, 104);
+  }
+
+  .updateButton:active {
+    background-color: rgb(180, 61, 84);
+  }
+}
+
+.editBooks h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
