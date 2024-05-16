@@ -83,13 +83,14 @@ export const EditBooksPage = () => {
     const token = localStorage.getItem("token");
 
     if (token == null) {
+      navigate("/login");
       return;
     }
 
     fetchBookInfo(id, token).then((responseData) => {
       reset(responseData);
     });
-  }, [id, reset]);
+  }, [id, navigate, reset]);
 
   return (
     <EditBooksPagePresenter

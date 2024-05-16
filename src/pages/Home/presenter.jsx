@@ -27,7 +27,7 @@ export const HomePagePresenter = ({
           {books.map((book) => (
             <li key={book.id} className="bookList__item">
               <Link
-                to={book.isMine ? `/edit/${book.id}` : `/detail/${book.id}`}
+                to={book?.isMine ? `/edit/${book.id}` : `/detail/${book.id}`}
                 className="bookItem__link"
                 onClick={() => handleClickItem(book.id)}
               >

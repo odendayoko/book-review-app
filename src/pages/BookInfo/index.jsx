@@ -1,7 +1,7 @@
 import axios from "axios";
 import { BookInfoPagePresenter } from "./presenter";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const fetchBookInfo = async (bookId, token) => {
   try {
@@ -25,6 +25,7 @@ export const fetchBookInfo = async (bookId, token) => {
 
 export const BookInfoPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [bookInfo, setBookInfo] = useState(null);
 
@@ -32,13 +33,14 @@ export const BookInfoPage = () => {
     const token = localStorage.getItem("token");
 
     if (token == null) {
+      navigate("/login");
       return;
     }
 
     fetchBookInfo(id, token).then((responseData) => {
       setBookInfo(responseData);
     });
-  }, [id]);
+  }, [id, navigate]);
 
   return <BookInfoPagePresenter bookInfo={bookInfo} />;
 };

@@ -71,6 +71,7 @@ export const HomePage = () => {
     const token = localStorage.getItem("token");
 
     if (token == null) {
+      alert("レビューの詳細を確認するにはログインしてください");
       return;
     }
 
